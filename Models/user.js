@@ -42,7 +42,9 @@ var user_schema = new Schema({
     "corresp.estado": String,
     "corresp.paquetes": Array,
     "corresp.paquetes[0].Paquete": Number,  
-    "corresp.paquetes[0].fechaPaquete": Date,  
+    "corresp.paquetes[0].fechaPaquete":{
+        type: Date,
+    },
     "corresp.paquetes[0].estadoPaquete": String,
     /*"corresp.paquetes[1].Paquete": Number,  
     "corresp.paquetes[1].fechaPaquete": Date,  

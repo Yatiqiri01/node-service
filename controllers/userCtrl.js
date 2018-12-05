@@ -29,7 +29,6 @@ function buscarUsuarios(req,res){
 }
 
 function insertarUsuario(req,res){
-    var i=0;
     var user = new User({
         tipo:req.body.tipo,
         nombre: req.body.nombre,
@@ -39,8 +38,8 @@ function insertarUsuario(req,res){
             estado:req.body.corresp.estado,
             paquetes:[{
                 Paquete:req.body.corresp.paquetes[0].Paquete,
-                fechaPaquete:req.body.corresp.paquetes[0].fecha,
-                estadoPaquete:req.body.corresp.paquetes[0].estado,
+                fechaPaquete:req.body.corresp.paquetes[0].fechaPaquete,
+                estadoPaquete:req.body.corresp.paquetes[0].estadoPaquete,
             }
             /*{
                 Paquete:req.body.corresp.paquetes[1].Paquete,
@@ -59,7 +58,6 @@ function insertarUsuario(req,res){
             },*/ 
             ]
         },
-        
         fechaHabilitacion: new Date()
     })
 
@@ -73,7 +71,7 @@ function insertarUsuario(req,res){
 }
 
 function buscarNombre(req,res){
-    User.find({nombre: {$regex: req.params.nombre}}, (err,usuario)=>{
+    User.findOne    ({nombre: {$regex: req.params.nombre}}, (err,usuario)=>{
         if(err){
             res.send(err)
         }else{
@@ -118,7 +116,6 @@ function eliminarUsuario(req,res){
         }
     })
 }
-
 
 function mensaje(req,res){
     User.find({nombre: {$regex: req.params.nombre}}, (err,usuario)=>{

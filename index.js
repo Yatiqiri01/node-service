@@ -23,9 +23,7 @@ app.post("/saludo", usrCtrl.mensajePost)
 app.get("/params/:nombre/:apellido",usrCtrl.mensajeParam)
 app.post('/logueo', usrCtrl.login);
 
-
 app.get('/invocar',auth, usrCtrl.invoca)
-
 
 app.get('/invocar',auth, (req,res)=>{
     User.find({},(err,crud)=>{
@@ -36,7 +34,9 @@ app.get('/invocar',auth, (req,res)=>{
         }
     })
 })
+
 app.use("/ejemplo",router_user)
+
 app.listen(PORT, ()=>{
     console.log("Servidor Inicializado en :" + PORT)
 })
